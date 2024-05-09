@@ -77,6 +77,12 @@ namespace downloadFromNet
                 { 
                     Console.WriteLine("Verifiez votre connexion internet ou que l'url de téléchargement soit valide !");
                 }
+
+                var statusCode = (HttpWebResponse)ex.Response;
+                if (statusCode.StatusCode == HttpStatusCode.NotFound)
+                {
+                    Console.WriteLine("ERREUR : Fichier non trouvé");
+                }
             }
         }
         public static void Main(string[] args)
